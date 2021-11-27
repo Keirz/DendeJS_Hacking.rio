@@ -2,10 +2,12 @@
 	- questionário para mapeamento
 	- direcionamento do curso
 	- sistema de recomendação de cursos
+	- gerar dados para a empresa - ex: muita gnt busca finanças voltado para startup, porém a empresa só tem cursos de 120hrs bem geral. Fazer cursos menores e especificos para esse público
 2. Acompanhamento durante o curso
 	- Bot acompanhamento e incentivo
 	- acompanhamento humano caso necessário
 	- dashboard dos resultados da gamificação
-	- Comunicação via whatsapp
 3. Recompensa
 	- dependendo do resultado da gamificação
+	- Feedback positivo e motivador
+	- feedback do usuário
