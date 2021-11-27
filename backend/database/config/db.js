@@ -1,6 +1,5 @@
 require('dotenv').config()
-// se der erro exportar development e production
-console.log(process.env.DB_PASSWORD)
+
 module.exports = {
     username: process.env.DB_USERNAME,
     password: '',
