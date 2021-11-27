@@ -21,7 +21,8 @@ def start(update, context):
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    update.message.reply_text("Digite o problema, estou aqui para resolvê-lo!")
+    update.message.reply_text("Digite o problema, estou aqui para te ajudar!")
+
 
 state = 0
 def echo(update, context):
@@ -47,21 +48,26 @@ def echo(update, context):
     elif state == 2:
         update.message.reply_text("Aguarde que irei direcioná-lo a página do curso")
     elif state == 3:
-        update.message.reply_text("Pelo digitado, as melhores opções para você são:\n (Opção1)\n (Opção2)\n (Opção3)")
+        update.message.reply_text("Segundo o seu perfil, as melhores opções para você são:\n (Opção1)\n (Opção2)\n (Opção3)")
 
 
 def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
+
 def aviso(update, context):
     "Send a message when the user didnt go to class or something"
     update.message.reply_text("Vi que você não foi a aula! Tá tudo bem? Quer conversar?")
 
+
 def aula_workshop(update, context):
-    "Send a message when something importante will happen"
-    update.message.reply_text("Ei! Passei aqui para lembrar você que (dia tal, horas tal) vai ter (um evento), que esse evento contribua bastante para o sucesso de nossos alunos!")
-    update.message.reply_text("Veja aqui o depoimento de um aluno que participou desse evento: (link)")
+    "Send a message when something important will happen"
+    update.message.reply_text("Ei! Passei aqui para lembrar você que (dia tal, horas tal) vai ter (um evento), que esse evento contribua bastante para o sucesso de nossos alunos! Veja aqui o depoimento de um aluno que participou desse evento: (link)")
+
+def cadastro(update, context):
+    "Send a message when the user first logins in the site"
+    update.message.reply_text("Olá! Bem-vindo ao Dende Education! Sou a Sebrina, sua assistente virtual! Espero poder ajudá-lo na sua jornada!")
 
 
 def main():
@@ -74,6 +80,7 @@ def main():
     dp.add_handler(CommandHandler("cursos", echo))
     dp.add_handler(CommandHandler("atendimento", echo))
     dp.add_error_handler(error)
+
 
     # Tratamento quando chega alguma mensagem
     #dp.add_handler(MessageHandler(Filters.text, echo))
