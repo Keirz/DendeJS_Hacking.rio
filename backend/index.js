@@ -14,6 +14,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res)=>{
   res.render('example', {games: [{name:"AAA", description:"BBB"}]})
 })
+app.get('/pesquisa', (req, res)=>{
+  res.render('survey', {games: [{name:"AAA", description:"BBB"}]})
+})
+app.get('/dashboard', (req, res)=>{
+  res.render('survey', {games: [{name:"AAA", description:"BBB"}]})
+})
+
 
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
