@@ -11,3 +11,5 @@
 	- dependendo do resultado da gamificação
 	- Feedback positivo e motivador
 	- feedback do usuário
+	
+
