@@ -1,0 +1,11 @@
+1. Mapeamento do perfil do aluno e direcionamento
+	- questionário para mapeamento
+	- direcionamento do curso
+	- sistema de recomendação de cursos
+2. Acompanhamento durante o curso
+	- Bot acompanhamento e incentivo
+	- acompanhamento humano caso necessário
+	- dashboard dos resultados da gamificação
+	- Comunicação via whatsapp
+3. Recompensa
+	- dependendo do resultado da gamificação
