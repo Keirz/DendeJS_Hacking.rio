@@ -16,9 +16,11 @@ logger = logging.getLogger(__name__)
 
 # Define a few command handlers. These usually take the two arguments update and
 # context. Error handlers also receive the raised TelegramError object in error.
-def start(update, context):
+def voltar(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Olá! Como posso te ajudar?')
+    global state
+    state = 0
+    echo(update,context)
 
 
 def help(update, context):
@@ -38,26 +40,26 @@ def echo(update, context):
       bot.send_message('-1001528911072', message.split(':')[1])
       return
     if state == 0:
-        update.message.reply_text("Olá! O que deseja?\n1 - Lista de cursos\n2 - Falar com alguém\n3 - Recomendação de cursos\n...")
+        update.message.reply_text("Olá, tudo bem? O que deseja?\n1 - Nossos cursos\n2 - Recomendação de cursos\n3 - Falar com alguém\n4 - Quem sou eu?")
         state = 1
     elif state == 1:
             if message == "1":
                 update.message.reply_text("Lista de cursos:\n Consultoria\n Marketing\n Empreendedorismo\n Gestão Financeira\n Gestão de Pessoas\n Administração\n Vendas")
                 state = 2
             elif message == "2":
-                update.message.reply_text("Aguarde que irei chamar um de nossos atendentes")
+                update.message.reply_text("Digite a área de estudo que deseja:")
                 state = 3
             elif message == "3":
-                update.message.reply_text("Digite a área de estudo que deseja:")
+                update.message.reply_text("Aguarde que irei chamar um de nossos atendentes")
                 state = 4
             else:
-                update.message.reply_text("Não entendi! Digite a opção desejada!\n1.Lista de cursos\n2.Falar com alguem\n3.Recomendação de cursos\n...")
+                update.message.reply_text("Mil Desculpas, mas não entendi :(\nDigite a opção desejada!\n1.Lista de cursos\n2.Falar com alguem\n3.Recomendação de cursos\n...")
     elif state == 2:
         update.message.reply_text("Aguarde que irei direcioná-lo a página do curso")
     elif state == 3:
         update.message.reply_text("Segundo o seu perfil, as melhores opções para você são:\n (Opção1)\n (Opção2)\n (Opção3)")
-
-
+    else:
+      update.message.reply_text("Mil Desculpas, mas não entendi :(\nDigite /help para ajuda ou /voltar para voltar ao menu!")
 def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
@@ -88,7 +90,7 @@ def main():
     # bot = Bot(config['TOKEN_TELEGRAM'])
     dp = updater.dispatcher
     # on different commands - answer in Telegram
-    dp.add_handler(CommandHandler("start", start))
+    dp.add_handler(CommandHandler("voltar", voltar))
     dp.add_handler(CommandHandler("help", echo))
     dp.add_handler(CommandHandler("aviso", aviso))
     dp.add_error_handler(error)
