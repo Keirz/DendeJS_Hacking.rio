@@ -7,8 +7,7 @@
                     <tr>
                         <th>Nome</th>
                         <th>Descrição</th>
-                        <th>Data de entrada</th>
-                        <th>Data de saida</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -17,8 +16,7 @@
                         <tr>
                             <td><%= game.name %></td>
                             <td><%= game.description %></td>
-                            <td><%= new Date(game.createdAt).toLocaleString("pt-BR") %></td>
-                            <td><%= new Date(game.updatedAt).toLocaleString("pt-BR") %></td>
+                      
                         </tr>
                         <% }); %>
                 </tbody>
