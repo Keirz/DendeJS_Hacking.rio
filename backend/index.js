@@ -18,7 +18,7 @@ app.get('/pesquisa', (req, res)=>{
   res.render('survey', {games: [{name:"AAA", description:"BBB"}]})
 })
 app.get('/dashboard', (req, res)=>{
-  res.render('survey', {games: [{name:"AAA", description:"BBB"}]})
+  res.render('dashboard', {games: [{name:"AAA", description:"BBB"}]})
 })
 
 

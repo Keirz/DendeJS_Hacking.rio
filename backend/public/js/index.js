@@ -9,4 +9,3 @@ function toggle_visibility() {
         form.style.display = 'none';
     }
  }
-
