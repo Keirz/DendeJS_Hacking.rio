@@ -7,7 +7,7 @@ from dotenv import dotenv_values
 config = dotenv_values(".env")
 import logging
 
-
+from telegram import Bot
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -27,11 +27,16 @@ def help(update, context):
 
 
 state = 0
+bot = Bot(config['TOKEN_TELEGRAM'])
 def echo(update, context):
     global state 
+    global bot
     """Echo the user message."""
     #update.message.reply_text(update.message.text)
     message = update.message.text
+    if 'CUSTOMMSG:' in message:
+      bot.send_message('-1001528911072', message.split(':')[1])
+      return
     if state == 0:
         update.message.reply_text("Olá! O que deseja?\n1 - Lista de cursos\n2 - Falar com alguém\n3 - Recomendação de cursos\n...")
         state = 1
@@ -59,6 +64,7 @@ def error(update, context):
 
 
 def aviso(update, context):
+    
     "Send a message when the user didnt go to class or something"
     update.message.reply_text("Vi que você não foi a aula! Tá tudo bem? Quer conversar?")
 
@@ -72,20 +78,26 @@ def cadastro(update, context):
     update.message.reply_text("Olá! Bem-vindo ao Dende Education! Sou a Sebrina, sua assistente virtual! Espero poder ajudá-lo na sua jornada!")
 
 
+# def sendCustomMessage(update, context):
+#   bot = Bot(config['TOKEN_TELEGRAM'])
+#   bot.send_message('-1001528911072', update.message.text)
+
 def main():
     """Start the bot."""
     updater = Updater(config['TOKEN_TELEGRAM'], use_context=True)
+    # bot = Bot(config['TOKEN_TELEGRAM'])
     dp = updater.dispatcher
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", echo))
+    dp.add_handler(CommandHandler("aviso", aviso))
     dp.add_error_handler(error)
+    # bot.send_message('-1001528911072', "FUNCIONOU CARALHO")
 
-
-    # Tratamento quando chega alguma mensagem
-    #dp.add_handler(MessageHandler(Filters.text, echo))
+   
+    # botar o CUSTOMMSG:
     dp.add_handler(MessageHandler(Filters.text, echo))
-
+    # dp.add_handler(MessageHandler(Filters.text, sendCustomMessage))
 
     # Start the Bot
     updater.start_polling()
