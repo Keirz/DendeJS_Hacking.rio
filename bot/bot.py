@@ -16,22 +16,43 @@ logger = logging.getLogger(__name__)
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi!')
+    update.message.reply_text('Olá! Como posso te ajudar?')
 
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Help!')
+    update.message.reply_text("Digite o problema, estou aqui para resolvê-lo!")
 
-
+state = 0
 def echo(update, context):
+    global state 
     """Echo the user message."""
-    update.message.reply_text(update.message.text)
+    #update.message.reply_text(update.message.text)
+    message = update.message.text
+    if state == 0:
+        update.message.reply_text("Olá! O que deseja?\n1 - Lista de cursos\n2 - Falar com alguém\n3 - Recomendação de cursos\n...")
+        state = 1
+    elif state == 1:
+            if message == "1":
+                update.message.reply_text("Lista de cursos:\n Consultoria\n Marketing\n Empreendedorismo\n Gestão Financeira\n Gestão de Pessoas")
+                state = 2
+            elif message == "2":
+                update.message.reply_text("Aguarde que irei chamar um de nossos atendentes")
+                state = 3
+            elif message == "3":
+                update.message.reply_text("Digite a área de estudo que deseja")
+                state = 4
+            else:
+                update.message.reply_text("Não entendi! Digite a opção desejada!\n1.Lista de cursos\n2.Falar com alguem\n3.Recomendação de cursos\n...")
 
 
 def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
+
+def aviso(update, context):
+    "Send a message when the user didnt go to class or something"
+    update.message.reply_text("Vi que você não foi a aula! Tá tudo bem? Quer conversar?")
 
 
 def main():
@@ -40,10 +61,13 @@ def main():
     dp = updater.dispatcher
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("help", help))
+    dp.add_handler(CommandHandler("help", echo))
+    dp.add_handler(CommandHandler("cursos", echo))
+    dp.add_handler(CommandHandler("atendimento", echo))
     dp.add_error_handler(error)
 
     # Tratamento quando chega alguma mensagem
+    #dp.add_handler(MessageHandler(Filters.text, echo))
     dp.add_handler(MessageHandler(Filters.text, echo))
 
 
