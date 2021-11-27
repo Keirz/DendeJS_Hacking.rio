@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*-
 # This program is dedicated to the public domain under the CC0 license.
 
+
 from dotenv import dotenv_values
 config = dotenv_values(".env")
 import logging
+
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
