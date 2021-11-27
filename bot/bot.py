@@ -34,16 +34,20 @@ def echo(update, context):
         state = 1
     elif state == 1:
             if message == "1":
-                update.message.reply_text("Lista de cursos:\n Consultoria\n Marketing\n Empreendedorismo\n Gestão Financeira\n Gestão de Pessoas")
+                update.message.reply_text("Lista de cursos:\n Consultoria\n Marketing\n Empreendedorismo\n Gestão Financeira\n Gestão de Pessoas\n Administração\n Vendas")
                 state = 2
             elif message == "2":
                 update.message.reply_text("Aguarde que irei chamar um de nossos atendentes")
                 state = 3
             elif message == "3":
-                update.message.reply_text("Digite a área de estudo que deseja")
+                update.message.reply_text("Digite a área de estudo que deseja:")
                 state = 4
             else:
                 update.message.reply_text("Não entendi! Digite a opção desejada!\n1.Lista de cursos\n2.Falar com alguem\n3.Recomendação de cursos\n...")
+    elif state == 2:
+        update.message.reply_text("Aguarde que irei direcioná-lo a página do curso")
+    elif state == 3:
+        update.message.reply_text("Pelo digitado, as melhores opções para você são:\n (Opção1)\n (Opção2)\n (Opção3)")
 
 
 def error(update, context):
@@ -53,6 +57,11 @@ def error(update, context):
 def aviso(update, context):
     "Send a message when the user didnt go to class or something"
     update.message.reply_text("Vi que você não foi a aula! Tá tudo bem? Quer conversar?")
+
+def aula_workshop(update, context):
+    "Send a message when something importante will happen"
+    update.message.reply_text("Ei! Passei aqui para lembrar você que (dia tal, horas tal) vai ter (um evento), que esse evento contribua bastante para o sucesso de nossos alunos!")
+    update.message.reply_text("Veja aqui o depoimento de um aluno que participou desse evento: (link)")
 
 
 def main():
