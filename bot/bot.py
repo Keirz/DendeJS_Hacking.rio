@@ -79,8 +79,6 @@ def main():
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", echo))
-    dp.add_handler(CommandHandler("cursos", echo))
-    dp.add_handler(CommandHandler("atendimento", echo))
     dp.add_error_handler(error)
 
 
