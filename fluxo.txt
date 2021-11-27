@@ -12,4 +12,10 @@
 	- Feedback positivo e motivador
 	- feedback do usuário
 	
-
+	
+paginas:
+1. Login
+2. formulário (pegada google foms) com algumas perguntas (não precisa botar agr as perguntas, só montar a base e já deixar os componentes prontos.
+3. pagina de recomendação de outros cursos
+4. pagina de dashboard com resultados, pontos, recompensa pela conclusão
+5. pagina de agradecimento e feedack
