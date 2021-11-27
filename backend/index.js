@@ -2,10 +2,18 @@ const dotenv = require('dotenv')
 dotenv.config()
 const express = require('express');
 const app = express();
-
+const path = require('path')
 const { login } = require('./query')
 
 app.use(express.json({}));
+app.set('views', path.join(__dirname, 'views'));
+app.engine('ejs', require('ejs-locals'));
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res)=>{
+  res.render('example', {games: [{name:"AAA", description:"BBB"}]})
+})
 
 app.post('/login', (req, res) => {
   const { username, password } = req.body;

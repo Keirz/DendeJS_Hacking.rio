@@ -1,0 +1,26 @@
+<% block('title', "Teste") -%>
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <% games.forEach(function(game){ %>
+                        <tr>
+                            <td><%= game.name %></td>
+                            <td><%= game.description %></td>
+                      
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
