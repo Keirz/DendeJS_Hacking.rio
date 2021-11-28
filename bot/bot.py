@@ -25,7 +25,7 @@ def voltar(update, context):
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    update.message.reply_text("Digite o problema, estou aqui para te ajudar!")
+    update.message.reply_text("Digite o problema, estou aqui para te ajudar :)")
 
 
 state = 0
