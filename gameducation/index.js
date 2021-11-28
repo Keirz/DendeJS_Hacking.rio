@@ -3,7 +3,7 @@ dotenv.config()
 const express = require('express');
 const app = express();
 const path = require('path')
-const { login } = require('./query')
+const { login, teste } = require('./query')
 
 app.use(express.json({}));
 app.set('views', path.join(__dirname, 'views'));
@@ -25,6 +25,11 @@ app.get('/dashboard', (req, res)=>{
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
   const auth = login(username, password)
+  return auth
+})
+
+app.post('/teste', (req, res) => {
+  const auth = teste()
   return auth
 })
 
